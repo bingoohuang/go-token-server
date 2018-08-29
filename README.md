@@ -1,2 +1,24 @@
 # go-token-server
 token server for wx access token and etc.
+
+
+# Table DDL
+
+```sql
+-- MySQL
+
+DROP TABLE IF EXISTS x_token;
+CREATE TABLE x_token (
+ TOKEN_ID varchar(20) NOT NULL COMMENT '令牌ID',
+ TOKEN varchar(300) NULL COMMENT '令牌内容JSON',
+ REFRESHER varchar(30) NULL COMMENT '刷新器',
+ VAR1 varchar(100)  NULL COMMENT '参数1',
+ VAR2 varchar(100)  NULL COMMENT '参数2',
+ VAR3 varchar(100)  NULL COMMENT '参数3',
+ CREATE_TIME datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+ UPDATE_TIME  TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+
+ PRIMARY KEY (TOKEN_ID)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '令牌表';
+
+```
